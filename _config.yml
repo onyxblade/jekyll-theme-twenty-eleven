@@ -7,14 +7,21 @@ description: > # this means to ignore newlines until "show_excerpts:"
   line in _config.yml. It will appear in your document head meta (for
   Google search results) and in your feed.xml site description.
 
-# Minima date format
-# refer to https://shopify.github.io/liquid/filters/date/ if you want to customize this
 jekyll_theme_twenty_eleven:
   dark: true
   one-column: true
+  i18n:
+    home: Home
+
+jekyll-archives:
+  enabled: [categories]
+  layout: archive
+  permalinks:
+    category: '/category/:name/'
 
 theme: jekyll-theme-twenty-eleven
 
 plugins:
- - jekyll-feed
- - jekyll-seo-tag
+  - jekyll-feed
+  - jekyll-seo-tag
+  - jekyll-archives

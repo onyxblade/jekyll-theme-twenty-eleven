@@ -25,12 +25,9 @@ layout: default
 
       <footer class="entry-meta">
         {%- if page.author -%}
+          Created by
           {% for author in page.author %}
-            <div id="author-info">
-              <div id="author-description" itemprop="author" itemscope itemtype="http://schema.org/Person">
-                <h2 itemprop="name">{{ author }}</h2>
-              </div>
-            </div>
+            <a href="#">{{ author }}</a>
           {% endfor %}
         {%- endif -%}
       </footer>

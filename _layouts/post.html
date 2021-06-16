@@ -1,5 +1,42 @@
 ---
 layout: default
 ---
+<div id="primary">
+  <div id="content" role="main">
+    <!--<nav id="nav-single">
+      <h3 class="assistive-text">Post navigation</h3>
+      <span class="nav-previous"><?php previous_post_link( '%link', __( '<span class="meta-nav">&larr;</span> Previous', 'twentyeleven' ) ); ?></span>
+      <span class="nav-next"><?php next_post_link( '%link', __( 'Next <span class="meta-nav">&rarr;</span>', 'twentyeleven' ) ); ?></span>
+    </nav>-->
 
-{{ content }}
+    <article itemscope itemtype="http://schema.org/BlogPosting">
+      <header class="entry-header">
+        <h1 class="entry-title" itemprop="name headline">{{ page.title | escape }}</h1>
+
+        <div class="entry-meta" itemprop="datePublished">
+          {%- assign date_format = site.minima.date_format | default: "%b %-d, %Y" -%}
+          {{ page.date | date: date_format }}
+        </div>
+      </header>
+
+      <div class="entry-content">
+        {{ content }}
+      </div>
+
+      <footer class="entry-meta">
+        {%- if page.author -%}
+          {% for author in page.author %}
+            <div id="author-info">
+              <div id="author-description" itemprop="author" itemscope itemtype="http://schema.org/Person">
+                <h2 itemprop="name">{{ author }}</h2>
+              </div>
+            </div>
+          {% endfor %}
+        {%- endif -%}
+      </footer>
+    </article>
+
+    {%- include comments.html -%}
+
+  </div>
+</div>

@@ -6,6 +6,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   {%- seo -%}
   <link rel="stylesheet" href="{{ "/assets/css/style.css" | relative_url }}">
+  {% if site.jekyll_theme_twenty_eleven.dark %}
+    <link rel="stylesheet" href="{{ "/assets/css/dark.css" | relative_url }}">
+  {% endif %}
+
+
   {%- feed_meta -%}
   {%- if jekyll.environment == 'production' and site.google_analytics -%}
     {%- include google-analytics.html -%}
@@ -20,7 +25,7 @@
     {%- assign titles_size = site.pages | map: 'title' | join: '' | size -%}
     <hgroup>
       <h1 id="site-title"><span><a href="{{ "/" | relative_url }}" rel="author">{{ site.title | escape }}</a></span></h1>
-      <h2 id="site-description"><?php bloginfo( 'description' ); ?></h2>
+      <h2 id="site-description">{{ site.description | escape }}</h2>
     </hgroup>
 
     <a href="/">
@@ -52,13 +57,13 @@
   </header>
 
 
-  <div id="main">
+  <div id="main" class="one-column">
     {{ content }}
   </div>
 
   <footer id="colophon" role="contentinfo">
     <div id="site-generator">
-      <a href="#" class="imprint">Proudly powered by WordPress
+      <a href="https://jekyllrb.com/" class="imprint">Proudly powered by Jekyll
       </a>
     </div>
   </footer>
